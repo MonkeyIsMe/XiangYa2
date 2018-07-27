@@ -156,7 +156,7 @@ public class ScaleManageDAO {
 			e.printStackTrace();
 			return null;
 		}
-		return null;
+		return list;
 	}
 	
 	//返回所有量表的名字和id
