@@ -108,23 +108,4 @@ public class PrintInforDAO {
 		return fac;
 	}
 	
-	public ArrayList<SysUser> SelectU_depart(String u_id){
-		Connection conn = JDBCUtil.getConnection();
-		ArrayList<SysUser> al = new ArrayList<SysUser>();
-		String sql = "select U_DEPART from tab_sysuser where U_NAME in(select U_CREATER from tab_user where U_ID = '" + u_id + "')";
-		System.out.println(sql);
-		try {
-			PreparedStatement stmt= conn.prepareStatement(sql);
-			ResultSet rs = stmt.executeQuery();
-			if(rs.next()) {
-				SysUser su = new SysUser();
-				su.setDept_id(rs.getInt("U_DEPART"));
-				al.add(su);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return al;
-	}
 }
