@@ -28,6 +28,7 @@ public class RecordDAO {
 			stmt.setInt(8, r.getTopicId());
 			stmt.setString(9, r.getRevisitDate());
 			stmt.setInt(10, r.getSysuserId());
+			System.out.println(sql);
 			stmt.execute();
 			//System.out.println(flag);
 		} catch (SQLException e) {
@@ -69,6 +70,7 @@ public class RecordDAO {
 			stmt.setString(6, record.getR1());
 			stmt.setString(7, record.getR2());
 			stmt.setInt(8, record.getId());
+			System.out.println(sql);
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -107,10 +109,10 @@ public class RecordDAO {
 	
 	
 	//根据patientId查到多天记录
-	public ArrayList<Record>fetchRecordListByPatientId(int patientId){
+	public ArrayList<Record> fetchRecordListByPatientId(int patientId){
 		Connection conn = JDBCUtil.getConnection();
 		ArrayList<Record> recordList = new ArrayList<Record>();
-		String sql = "select * from tab_record where patientId=?";
+		String sql = "select * from tab_record where patientId =?";
 		try {
 			PreparedStatement stmt= conn.prepareStatement(sql);
 			stmt.setInt(1, patientId);
