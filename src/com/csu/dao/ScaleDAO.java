@@ -1,4 +1,4 @@
-package com.csu.dao;
+ package com.csu.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import com.csu.entity.Choice;
 import com.csu.entity.Choice2;
 import com.csu.entity.MentalScale;
+import com.csu.entity.Report;
 import com.csu.entity.ScaleItem;
 import com.csu.entity.Uresult;
 import com.csu.utils.JDBCUtil;
@@ -46,9 +47,9 @@ public class ScaleDAO {
 		 return true;
 	 }
 	 
-	public boolean InsertToReport(int u_id,int s_id,String datetime,String account){
+	public boolean InsertToReport(Report re){
 		Connection conn = JDBCUtil.getConnection();
-		String sql = "insert into tab_report(u_id,s_id,t_time,sysID) values ('" + u_id + "','" + s_id + "','" +  datetime + "','"+account+"')";
+		String sql = "insert into tab_report(u_id,s_id,t_time,sysID) values ('" + re.getU_id() + "','" + re.getS_id() + "','" +  re.getT_time() + "','"+re.getSysID()+"')";
 		System.out.println(sql);
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);

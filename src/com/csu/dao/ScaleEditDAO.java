@@ -235,7 +235,7 @@ public class ScaleEditDAO {
 	//添加一个选项
 	public boolean addTableChoice(Choice ch){
 		Connection conn = JDBCUtil.getConnection();
-		String sql = "insert into tab_choice2(I_ID, C_Num, C_SubNum, C_Content, C_Score) " + " values('" + ch.getI_ID() + "', '" + ch.getC_Num() + "', '" + ch.getC_SubChoice() + "', '" + ch.getC_Content() + "', '" + ch.getC_Score() + "'" + ")";
+		String sql = "insert into tab_choice(I_ID, C_Num, C_SubChoice, C_Content, C_Score) " + " values('" + ch.getI_ID() + "', '" + ch.getC_Num() + "', '" + ch.getC_SubChoice() + "', '" + ch.getC_Content() + "', '" + ch.getC_Score() + "'" + ")";
 		System.out.println(sql);
 		try {
 			PreparedStatement stmt= conn.prepareStatement(sql);
@@ -247,6 +247,7 @@ public class ScaleEditDAO {
 		}
 		return true;
 	}
+	
 	
 	//添加一个子选项
 	 public boolean addSubChoice(Choice2 ch){

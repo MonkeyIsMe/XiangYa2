@@ -103,37 +103,39 @@ public class ReportDAO {
 		try {
 			PreparedStatement stmt= conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
-			Report ri = new Report();
-			int reportId = rs.getInt("id");
-			int uid = rs.getInt("u_id");
-			int sid = rs.getInt("s_id");
-			String datetime = rs.getString("t_time");
-			
-			ri.setT_time(datetime);
-			ri.setId(reportId);
-			ri.setS_id(sid);
-			ri.setU_id(uid);
-			
-			String sql1 = "select u_name from tab_patientinfo where u_id="+uid;
-			System.out.println(sql1);
-			
-			String sql2 = "select s_name from tab_mentalscale where s_id="+sid;
-			System.out.println(sql2);
-			
-			PreparedStatement stmt1 = conn.prepareStatement(sql1);
-			PreparedStatement stmt2 = conn.prepareStatement(sql2);
-			ResultSet rs1 = stmt1.executeQuery();
-			ResultSet rs2 = stmt2.executeQuery();
-			
-			if(rs1.next()){
-				 ri.setUname(rs1.getString("u_name"));
-			 }
-			 
-			 if(rs2.next()){
-				 ri.setSname(rs2.getString("s_name"));
-			 }
-			 
-			 al.add(ri);
+			while(rs.next()) {
+				Report ri = new Report();
+				int reportId = rs.getInt("id");
+				int uid = rs.getInt("u_id");
+				int sid = rs.getInt("s_id");
+				String datetime = rs.getString("t_time");
+				
+				ri.setT_time(datetime);
+				ri.setId(reportId);
+				ri.setS_id(sid);
+				ri.setU_id(uid);
+				
+				String sql1 = "select u_name from tab_patientinfo where u_id="+uid;
+				System.out.println(sql1);
+				
+				String sql2 = "select s_name from tab_mentalscale where s_id="+sid;
+				System.out.println(sql2);
+				
+				PreparedStatement stmt1 = conn.prepareStatement(sql1);
+				PreparedStatement stmt2 = conn.prepareStatement(sql2);
+				ResultSet rs1 = stmt1.executeQuery();
+				ResultSet rs2 = stmt2.executeQuery();
+				
+				if(rs1.next()){
+					 ri.setUname(rs1.getString("u_name"));
+				 }
+				 
+				 if(rs2.next()){
+					 ri.setSname(rs2.getString("s_name"));
+				 }
+				 
+				 al.add(ri);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -150,38 +152,40 @@ public class ReportDAO {
 		try {
 			PreparedStatement stmt= conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
-			Report ri = new Report();
-			
-			int reportId = rs.getInt("id");
-			int uid = rs.getInt("u_id");
-			int sid = rs.getInt("s_id");
-			String datetime = rs.getString("t_time");
-			
-			ri.setT_time(datetime);
-			ri.setId(reportId);
-			ri.setS_id(sid);
-			ri.setU_id(uid);
-			
-			String sql1 = "select u_name from tab_patientinfo where u_id="+uid;
-			System.out.println(sql1);
-			
-			String sql2 = "select s_name from tab_mentalscale where s_id="+sid;
-			System.out.println(sql2);
-			
-			PreparedStatement stmt1 = conn.prepareStatement(sql1);
-			PreparedStatement stmt2 = conn.prepareStatement(sql2);
-			ResultSet rs1 = stmt1.executeQuery();
-			ResultSet rs2 = stmt2.executeQuery();
-			
-			if(rs1.next()){
-				 ri.setUname(rs1.getString("u_name"));
-			 }
-			 
-			 if(rs2.next()){
-				 ri.setSname(rs2.getString("s_name"));
-			 }
-			 
-			 al.add(ri);
+			while(rs.next()) {
+				Report ri = new Report();
+				
+				int reportId = rs.getInt("id");
+				int uid = rs.getInt("u_id");
+				int sid = rs.getInt("s_id");
+				String datetime = rs.getString("t_time");
+				
+				ri.setT_time(datetime);
+				ri.setId(reportId);
+				ri.setS_id(sid);
+				ri.setU_id(uid);
+				
+				String sql1 = "select u_name from tab_patientinfo where u_id="+uid;
+				System.out.println(sql1);
+				
+				String sql2 = "select s_name from tab_mentalscale where s_id="+sid;
+				System.out.println(sql2);
+				
+				PreparedStatement stmt1 = conn.prepareStatement(sql1);
+				PreparedStatement stmt2 = conn.prepareStatement(sql2);
+				ResultSet rs1 = stmt1.executeQuery();
+				ResultSet rs2 = stmt2.executeQuery();
+				
+				if(rs1.next()){
+					 ri.setUname(rs1.getString("u_name"));
+				 }
+				 
+				 if(rs2.next()){
+					 ri.setSname(rs2.getString("s_name"));
+				 }
+				 
+				 al.add(ri);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
